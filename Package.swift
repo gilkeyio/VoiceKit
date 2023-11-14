@@ -21,6 +21,10 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "AudioProcessingTests",
-            dependencies: ["AudioProcessing"]),
+            dependencies: ["AudioProcessing"],
+            resources: [
+                .copy("samples")
+            ]),
+        
     ]
 )

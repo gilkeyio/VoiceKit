@@ -8,7 +8,7 @@ import Foundation
 import AVFoundation
 
 
-func loadAudioFileIntoBuffer(url: URL) -> AVAudioPCMBuffer? {
+public func loadAudioFileIntoBuffer(url: URL) -> AVAudioPCMBuffer? {
     do {
         // Load the audio file
         let audioFile = try AVAudioFile(forReading: url)

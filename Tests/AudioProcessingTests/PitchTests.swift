@@ -7,17 +7,19 @@
 
 import XCTest
 import AVFoundation
+@testable import AudioProcessing
 
 final class PitchTests: XCTestCase {
     
     func loadTestTone(fileName: String) -> AVAudioPCMBuffer? {
         let fileType = "wav"
-        let bundle = Bundle(for: type(of: self))
+        // Use Bundle.module for Swift Package Manager resources
+        let bundle = Bundle.module
         
-        if let fileURL = bundle.url(forResource: fileName, withExtension: fileType) {
+        if let fileURL = bundle.url(forResource: fileName, withExtension: fileType, subdirectory: "samples") {
             return loadAudioFileIntoBuffer(url: fileURL)
         } else {
-            XCTFail("File not found: \(fileName).\(fileType) in bundle: \(bundle)")
+            XCTFail("File not found: \(fileName).\(fileType) in samples directory")
             return nil
         }
     }

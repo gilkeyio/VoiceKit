@@ -10,7 +10,7 @@ import AVFoundation
 import Accelerate
 
 
-func getPitchYIN(buffer: AVAudioPCMBuffer, minPitch: Float, maxPitch: Float) -> Float? {
+public func getPitchYIN(buffer: AVAudioPCMBuffer, minPitch: Float, maxPitch: Float) -> Float? {
     // Process the buffer here
     
     // Step 1: Convert Audio Buffer to an Array of Floats
