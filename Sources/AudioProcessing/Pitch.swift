@@ -17,7 +17,7 @@ import Accelerate
     - buffer: An `AVAudioPCMBuffer` containing the audio data for pitch analysis.
     - minPitch: A `Float` representing the minimum pitch (in Hz) considered in the analysis. This parameter helps in narrowing down the pitch detection range.
     - maxPitch: A `Float` representing the maximum pitch (in Hz) considered. This sets the upper limit of the pitch detection range.
-
+    - silenceThresholdDb:A `Float` representing the threshhold for silence. Buffers with less than this power will just return nil
  - Returns: A `Float?` representing the estimated pitch in Hz. The function returns `nil` if no pitch is detected within the specified range.
 
  The function works by analyzing the audio data in `buffer`, focusing on frequencies between `minPitch` and `maxPitch`. It applies the YIN algorithm to estimate the fundamental frequency, which is interpreted as the pitch. If the algorithm cannot confidently determine the pitch within the specified range, the function returns `nil`.
