@@ -10,7 +10,27 @@ import AVFoundation
 import Accelerate
 
 
-public func getPitchYIN(buffer: AVAudioPCMBuffer, minPitch: Float, maxPitch: Float) -> Float? {
+/**
+ This function estimates the pitch of an audio signal using the YIN algorithm. The YIN algorithm is effective for pitch detection in monophonic audio signals and is commonly used in applications like musical instrument tuning and vocal training.
+
+ - Parameters:
+    - buffer: An `AVAudioPCMBuffer` containing the audio data for pitch analysis.
+    - minPitch: A `Float` representing the minimum pitch (in Hz) considered in the analysis. This parameter helps in narrowing down the pitch detection range.
+    - maxPitch: A `Float` representing the maximum pitch (in Hz) considered. This sets the upper limit of the pitch detection range.
+
+ - Returns: A `Float?` representing the estimated pitch in Hz. The function returns `nil` if no pitch is detected within the specified range.
+
+ The function works by analyzing the audio data in `buffer`, focusing on frequencies between `minPitch` and `maxPitch`. It applies the YIN algorithm to estimate the fundamental frequency, which is interpreted as the pitch. If the algorithm cannot confidently determine the pitch within the specified range, the function returns `nil`.
+ */
+public func getPitchYIN(buffer: AVAudioPCMBuffer, minPitch: Float, maxPitch: Float, silenceThresholdDb: Float? = nil) -> Float? {
+    // Step 0: Check if the signal is above the silence threshold (if provided)
+        if let thresholdDb = silenceThresholdDb {
+            let dbLevel = calculateDecibelLevel(buffer: buffer)
+            if dbLevel < thresholdDb {
+                return nil  // Signal is too quiet for pitch detection
+            }
+        }
+    
     // Process the buffer here
     
     // Step 1: Convert Audio Buffer to an Array of Floats
