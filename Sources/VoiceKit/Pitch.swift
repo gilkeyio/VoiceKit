@@ -22,7 +22,9 @@ import Accelerate
 
  The function works by analyzing the audio data in `buffer`, focusing on frequencies between `minPitch` and `maxPitch`. It applies the YIN algorithm to estimate the fundamental frequency, which is interpreted as the pitch. If the algorithm cannot confidently determine the pitch within the specified range, the function returns `nil`.
  */
-public func getPitchYIN(buffer: AVAudioPCMBuffer, minPitch: Float, maxPitch: Float, silenceThresholdDb: Float? = nil) -> Float? {
+public func getPitchYIN(buffer: AVAudioPCMBuffer, minPitch: Float, maxPitch: Float, silenceThresholdDb: Float? = nil) -> 
+    // TODO
+    Float? {
     // Step 0: Check if the signal is above the silence threshold (if provided)
         if let thresholdDb = silenceThresholdDb {
             let dbLevel = calculateDecibelLevel(buffer: buffer)
@@ -75,6 +77,9 @@ public func getPitchYIN(buffer: AVAudioPCMBuffer, minPitch: Float, maxPitch: Flo
     
     return nil
 }
+
+
+
 
 
 private func convertBufferToFloatArray(buffer: AVAudioPCMBuffer) -> [Float] {

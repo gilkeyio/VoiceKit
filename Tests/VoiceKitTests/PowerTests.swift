@@ -5,7 +5,7 @@
 
 import XCTest
 import AVFoundation
-@testable import AudioProcessing
+@testable import VoiceKit
 
 
 final class PowerTests: XCTestCase {

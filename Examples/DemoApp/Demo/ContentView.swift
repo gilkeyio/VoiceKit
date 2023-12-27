@@ -6,7 +6,7 @@
 
 import SwiftUI
 import AVFoundation
-import AudioProcessing
+import VoiceKit
 
 struct ContentView: View {
     @State private var pitch: Float = 0.0
